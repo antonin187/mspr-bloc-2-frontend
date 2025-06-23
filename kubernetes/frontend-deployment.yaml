@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nuxt-frontend
+  namespace: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nuxt-frontend
+  template:
+    metadata:
+      labels:
+        app: nuxt-frontend
+    spec:
+      containers:
+        - name: nuxt-frontend
+          image: antonin187/mspr-bloc-2-frontend:latest  # Remplace ici
+          ports:
+            - containerPort: 80
+          env:
+            - name: PORT
+              value: "80"
